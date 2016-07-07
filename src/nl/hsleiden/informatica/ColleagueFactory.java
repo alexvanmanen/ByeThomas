@@ -1,39 +1,20 @@
 package nl.hsleiden.informatica;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ColleagueFactory {
 	// Deze class is een Singleton.
 	private static ColleagueFactory instance = new ColleagueFactory();
-
-	public static final String Alex = "Alex";
-	public static final String Carla = "Carla";
-	public static final String Jos = "Jos";
-	public static final String PeterW = "PeterW";
-	public static final String Corinne = "Corinne";
-	public static final String Edward = "Edward";
-	public static final String FredB = "FredB";
-	public static final String Hans = "Hans";
-	public static final String Jaap = "Jaap";
-	public static final String Jacco = "Jacco";
-	public static final String James = "James";
-	public static final String Jeroen = "Jeroen";
-	public static final String JeroenM = "JeroenM";
-	public static final String JeroenR = "JeroenR";
-	public static final String Koen = "Koen";
-	public static final String Leontine = "Leontine";
-	public static final String Marja = "Marja";
-	public static final String Michelle = "Michelle";
-	public static final String Michiel = "Michiel";
-	public static final String Mischa = "Mischa";
-	public static final String Vera = "Vera";
-	public static final String Vincent = "Vincent";
-	public static final String Remco = "Remco";
-	public static final String Robbert = "Robbert";
-	public static final String Rob = "Rob";
-	public static final String Tycho = "Tycho";
-
+	private static final String packageName = "nl.hsleiden.informatica";
+	
+	
 	private ColleagueFactory() {
 	}
 
@@ -42,68 +23,38 @@ public class ColleagueFactory {
 	}
 
 	public List<String> getColleagueNames() {
-		return Arrays.asList(Alex, Carla, Edward, Jos, PeterW, Corinne, FredB, Hans, Jaap, Jacco, James, Jeroen, JeroenM,
-				JeroenR, Koen, Leontine, Marja, Michelle, Michiel, Mischa, Vera, Vincent, Remco, Robbert, Rob,Tycho);
-	}
+		List<String> result = new LinkedList<String>();
 
-	public Colleague createColleague(String name) {
-
-		switch (name) {
-		case Alex:
-			return new Alex();
-		case Carla:
-			return new Carla();
-		case Edward:
-			return new Edward();
-		case Jos:
-			return new Jos();
-		case PeterW:
-			return new PeterW();
-		case Corinne:
-			return new Corinne();
-		case FredB:
-			return new FredB();
-		case Hans:
-			return new Hans();
-		case Jaap:
-			return new Jaap();
-		case Jacco:
-			return new Jacco();
-		case James:
-			return new James();
-		case Jeroen:
-			return new Jeroen();
-		case JeroenM:
-			return new JeroenM();
-		case JeroenR:
-			return new JeroenR();
-		case Koen:
-			return new Koen();
-		case Leontine:
-			return new Leontine();
-		case Marja:
-			return new Marja();
-		case Michelle:
-			return new Michelle();
-		case Michiel:
-			return new Michiel();
-		case Mischa:
-			return new Mischa();
-		case Vera:
-			return new Vera();
-		case Vincent:
-			return new Vincent();
-		case Remco:
-			return new Remco();
-		case Robbert:
-			return new Robbert();
-		case Rob:
-			return new Rob();
-		case Tycho:
-			return new Tycho();
+		for (Class c: getColleagueImplementations()) {
+			result.add(c.getName().replace(packageName+".", ""));
 		}
-
-		return null;
+		return result;
 	}
+	
+	public List<Class> getColleagueImplementations(){
+		List<Class> result = new LinkedList<Class>();
+		try {
+			Class[] classes = new ReflectionUtillity().getClasses(packageName);
+			for(Class c: classes){
+				if(Arrays.asList(c.getInterfaces()).contains(Colleague.class)){
+					result.add(c);
+				}
+				
+				
+			}
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public Colleague createColleague(String name) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+		Class c = Class.forName(packageName+"." + name);
+		return (Colleague) c.newInstance();
+	}
+	
+
 
 }

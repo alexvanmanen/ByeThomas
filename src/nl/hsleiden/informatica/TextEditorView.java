@@ -1,6 +1,5 @@
 package nl.hsleiden.informatica;
 
-import java.lang.instrument.Instrumentation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -27,10 +26,11 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class TextEditorView extends Application {
 
-	private static volatile Instrumentation globalInstr;
+
 
 	public static void main(String[] args) {
 
+		
 		Application.launch(args);
 
 	}
@@ -56,7 +56,7 @@ public class TextEditorView extends Application {
 
 		final TextArea textArea = new TextArea();
 		textArea.setEditable(false);
-
+		textArea.setWrapText(true);
 		grid.add(textArea, 1, 4, 3, 3);
 
 
@@ -80,8 +80,14 @@ public class TextEditorView extends Application {
 			public void handle(ActionEvent event) {
 				String colleagueChoice = cb1.getValue();
 				String methodChoice = cb2.getValue();
-				Colleague colleague = ColleagueFactory.getInstance().createColleague(colleagueChoice);
-				textArea.setText(getValueFromMethod(methodChoice, colleague));
+				Colleague colleague;
+				try {
+					colleague = ColleagueFactory.getInstance().createColleague(colleagueChoice);
+					textArea.setText(getValueFromMethod(methodChoice, colleague));
+				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+					textArea.setText(cb1.getValue() + " bestaat niet (in deze codebase dan;))");
+				}
+				
 			}
 
 			private String getValueFromMethod(String methodChoice, Colleague colleague) {
