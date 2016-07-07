@@ -30,16 +30,6 @@ public class TextEditorView extends Application {
 	private static volatile Instrumentation globalInstr;
 
 	public static void main(String[] args) {
-		// Reflections reflections = new Reflections("nl.hsleiden.informatica");
-		//
-		// Set<Class<? extends Colleague>> classes =
-		// reflections.getSubTypesOf(Colleague.class);
-		// ArrayList<Class> instantiatedDerivedTypes;
-		//
-		// Class derivedClass = Colleague.class;
-		// if (!instantiatedDerivedClass.contains(derivedClass)) {
-		// instantiatedDerivedClass.Add(derivedClass);
-		// }
 
 		Application.launch(args);
 
@@ -47,13 +37,6 @@ public class TextEditorView extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		// Class[] allLoadedClasses = globalInstr.getAllLoadedClasses();
-		// System.out.println(allLoadedClasses[0].getName());
-		// for(Class c: allLoadedClasses){
-		// if (c.isInstance()) {
-		//
-		// }
-		// }
 
 		primaryStage.setTitle("Bye Bye");
 		GridPane grid = new GridPane();

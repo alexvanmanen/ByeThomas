@@ -2,6 +2,8 @@ package nl.hsleiden.informatica;
 
 import java.util.Date;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class Jeroen implements Colleague {
 
 	@Override
@@ -12,8 +14,7 @@ public class Jeroen implements Colleague {
 
 	@Override
 	public Date getMyBirthDate() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new NotImplementedException();
 	}
 
 	@Override
