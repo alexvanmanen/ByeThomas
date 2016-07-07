@@ -13,7 +13,7 @@ public class Vincent implements Colleague{
 
 	@Override
 	public Date getMyBirthDate()  throws NotImplementedException{
-		return new Date(84, 5, 31);
+		throw new NotImplementedException();
 	}
 
 	@Override
