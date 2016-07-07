@@ -12,6 +12,7 @@ public class ColleagueFactory {
 	public static final String Jos = "Jos";
 	public static final String PeterW = "PeterW";
 	public static final String Corinne = "Corinne";
+	public static final String Edward = "Edward";
 	public static final String FredB = "FredB";
 	public static final String Hans = "Hans";
 	public static final String Jaap = "Jaap";
@@ -41,62 +42,64 @@ public class ColleagueFactory {
 	}
 
 	public List<String> getColleagueNames() {
-		return Arrays.asList(Alex, Carla, Jos, PeterW, Corinne, FredB, Hans, Jaap, Jacco, James, Jeroen, JeroenM,
+		return Arrays.asList(Alex, Carla, Edward, Jos, PeterW, Corinne, FredB, Hans, Jaap, Jacco, James, Jeroen, JeroenM,
 				JeroenR, Koen, Leontine, Marja, Michelle, Michiel, Mischa, Vera, Vincent, Remco, Robbert, Rob,Tycho);
 	}
 
 	public Colleague createColleague(String name) {
 
 		switch (name) {
-		case "Alex":
+		case Alex:
 			return new Alex();
-		case "Carla":
+		case Carla:
 			return new Carla();
-		case "Jos":
+		case Edward:
+			return new Edward();
+		case Jos:
 			return new Jos();
-		case "PeterW":
+		case PeterW:
 			return new PeterW();
-		case "Corinne":
+		case Corinne:
 			return new Corinne();
-		case "FredB":
+		case FredB:
 			return new FredB();
-		case "Hans":
+		case Hans:
 			return new Hans();
-		case "Jaap":
+		case Jaap:
 			return new Jaap();
-		case "Jacco":
+		case Jacco:
 			return new Jacco();
-		case "James":
+		case James:
 			return new James();
-		case "Jeroen":
+		case Jeroen:
 			return new Jeroen();
-		case "JeroenM":
+		case JeroenM:
 			return new JeroenM();
-		case "JeroenR":
+		case JeroenR:
 			return new JeroenR();
-		case "Koen":
+		case Koen:
 			return new Koen();
-		case "Leontine":
+		case Leontine:
 			return new Leontine();
-		case "Marja":
+		case Marja:
 			return new Marja();
-		case "Michelle":
+		case Michelle:
 			return new Michelle();
-		case "Michiel":
+		case Michiel:
 			return new Michiel();
-		case "Mischa":
+		case Mischa:
 			return new Mischa();
-		case "Vera":
+		case Vera:
 			return new Vera();
-		case "Vincent":
+		case Vincent:
 			return new Vincent();
-		case "Remco":
+		case Remco:
 			return new Remco();
-		case "Robbert":
+		case Robbert:
 			return new Robbert();
-		case "Rob":
+		case Rob:
 			return new Rob();
-		case "Tycho":
+		case Tycho:
 			return new Tycho();
 		}
 
