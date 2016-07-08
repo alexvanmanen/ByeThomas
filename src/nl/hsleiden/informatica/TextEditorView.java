@@ -74,6 +74,15 @@ public class TextEditorView extends Application {
 
 		grid.add(methodText, 1, 2, 1, 1);
 		grid.add(cb2, 2, 2, 1, 1);
+		
+		cb1.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				cb2.setValue("");
+				cb2.setValue("getFarewellMessage");
+			}
+		});
+		
 
 		cb2.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
