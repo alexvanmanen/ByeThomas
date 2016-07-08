@@ -31,6 +31,7 @@ public class ColleagueFactory {
 	public static final String Remco = "Remco";
 	public static final String Robbert = "Robbert";
 	public static final String Rob = "Rob";
+	public static final String Thomas = "Thomas";
 
 	private ColleagueFactory() {
 	}
@@ -41,7 +42,7 @@ public class ColleagueFactory {
 
 	public List<String> getColleagueNames() {
 		return Arrays.asList(Alex, Carla, Jos, PeterW, Corinne, FredB, Hans, Jaap, Jacco, James, Jeroen, JeroenM,
-				JeroenR, Koen, Leontine, Marja, Michelle, Michiel, Mischa, Vera, Vincent, Remco, Robbert, Rob);
+				JeroenR, Koen, Thomas, Leontine, Marja, Michelle, Michiel, Mischa, Vera, Vincent, Remco, Robbert, Rob);
 	}
 
 	public Colleague createColleague(String name) {
@@ -69,6 +70,8 @@ public class ColleagueFactory {
 			return new James();
 		case "Jeroen":
 			return new Jeroen();
+		case "Thomas":
+			return new Thomas();
 		case "JeroenM":
 			return new JeroenM();
 		case "JeroenR":
